@@ -1,13 +1,14 @@
-from re import DEBUG
-import os
- 
+import os 
 from sqlalchemy import create_engine
- 
-class Config():
+
+
+class Config(object):
     SECRET_KEY = "ClaveSecreta"
-    SESSION_COOKIE_NAME = False
- 
+    SESSION_COOKIE_SECURE = False
+    
+
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost/BDIDGS804'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost:3306/BDIDGS804'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = 'llave_secreta'
