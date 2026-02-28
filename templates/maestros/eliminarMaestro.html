@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block container %}
+{% import "macros.html" as macros %}
+
+<div class="max-w-md mx-auto bg-red-50 p-6 rounded-base border border-red-200">
+    <h2 class="text-xl font-bold text-red-700 mb-4 text-center">¿Confirmar eliminación?</h2>
+    
+    <form method="POST" action="{{ url_for('maestros.eliminar', id=maestro.matricula) }}">
+        {{ form.matricula(style="display:none") }} <div class="mb-4">
+            <p class="text-sm text-gray-600">Vas a eliminar al maestro:</p>
+            <p class="text-lg font-bold">{{ maestro.nombre }} {{ maestro.apellidos }}</p>
+            <p class="text-sm italic">Especialidad: {{ maestro.especialidad }}</p>
+        </div>
+
+        <div class="flex gap-4">
+            <button type="submit" class="flex-1 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none transition">
+                Sí, eliminar
+            </button>
+            <a href="{{ url_for('maestros.index') }}" class="flex-1 text-center text-gray-700 bg-gray-200 hover:bg-gray-300 font-medium rounded-base text-sm px-4 py-2.5">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
